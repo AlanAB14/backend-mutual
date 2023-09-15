@@ -74,6 +74,5 @@ export const updateServicio = async (req, res) => {
             message: 'Something goes wrong'
         }) 
     }
-
 }
 

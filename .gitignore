@@ -1,2 +1,5 @@
 node_modules
+db/servicios
+db/dicen.txt
+db/videoNosotros.txt
 .env
