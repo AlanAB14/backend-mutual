@@ -8,7 +8,9 @@ import preguntasRoutes from './routes/preguntas.routes.js'
 import prestamosRoutes from './routes/prestamos.routes.js'
 import indexRoutes from './routes/index.routes.js'
 import bodyParser from 'body-parser'
+import cors from 'cors'
 
+app.use(cors())
 const app = express()
 app.use(bodyParser.json({ limit: "500mb" }))
 app.use(bodyParser.urlencoded({ limit: '500mb', extended: true, parameterLimit: 50000 }));
