@@ -35,7 +35,7 @@ export const createPrestamo = async (req, res) => {
     } catch (error) {
         console.log(error)
         return res.status(500).json({
-            message: 'Something goes wrong'
+            message: 'Something goes wrong.'
         }) 
     }
 
