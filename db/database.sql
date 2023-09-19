@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS servicios (
     titulo VARCHAR(255) NOT NULL,
     url VARCHAR(40) NOT NULL,
     icon TEXT NOT NULL,
-    image TEXT NOT NULL,
+    image LONGTEXT NOT NULL,
     texto TEXT NOT NULL,
     caracteristicas json NOT NULL,
     selected BOOLEAN NOT NULL
@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS nosotros (
     id INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(255) NOT NULL,
     texto TEXT NOT NULL,
-    video TEXT NOT NULL,
+    video LONGTEXT NOT NULL,
     selected BOOLEAN NOT NULL
 );
 DESCRIBE nosotros;

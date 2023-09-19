@@ -33,6 +33,7 @@ export const createPrestamo = async (req, res) => {
             id: rows.insertId,
         })
     } catch (error) {
+        console.log(error)
         return res.status(500).json({
             message: 'Something goes wrong'
         }) 
