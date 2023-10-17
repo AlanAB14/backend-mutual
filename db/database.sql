@@ -74,7 +74,8 @@ DESCRIBE usuarios;
 CREATE TABLE IF NOT EXISTS prestamos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     tipo VARCHAR(255) NOT NULL,
-    data json NOT NULL
+    data json NOT NULL,
+    fecha DATE NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS intereses (

@@ -28,7 +28,8 @@ export const getPrestamo = async (req, res) => {
 export const createPrestamo = async (req, res) => {
     const { tipo, data } = req.body;
     try {
-        const [rows] = await pool.query('INSERT INTO prestamos (tipo ,data) VALUES (?, ?)', [ tipo, data ])
+        const fecha = new Date();
+        const [rows] = await pool.query('INSERT INTO prestamos (tipo ,data, fecha) VALUES (?, ?)', [ tipo, data, fecha ])
         res.send({
             id: rows.insertId,
         })
