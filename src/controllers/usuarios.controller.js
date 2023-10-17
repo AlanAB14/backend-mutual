@@ -84,7 +84,8 @@ export const updateUsuario = async (req, res) => {
     const { id } = req.params
     const { password, super_admin } = req.body
     try {
-        const result = await pool.query('UPDATE usuarios set password = IFNULL(?, password), super_admin = IFNULL(?, super_admin) WHERE id = ?', [password, super_admin, id])
+        const hashPass = bcrypt.hashSync(password, 10)
+        const result = await pool.query('UPDATE usuarios set password = IFNULL(?, password), super_admin = IFNULL(?, super_admin) WHERE id = ?', [hashPass, super_admin, id])
         if (result.affectedRows === 0) return res.status(404).json({
             message: 'Servicio not found'
         })
