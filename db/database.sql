@@ -66,7 +66,8 @@ DESCRIBE intereses;
 CREATE TABLE IF NOT EXISTS usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL
+    password VARCHAR(255) NOT NULL,
+    super_admin BOOLEAN NOT NULL
 );
 DESCRIBE usuarios;
 
