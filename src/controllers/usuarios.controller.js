@@ -3,6 +3,18 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { SECRET_KET } from "../config.js";
 
+
+export const getUsuarios = async (req, res) => {
+    try {
+        const [rows] = await pool.query('SELECT * FROM usuarios')
+        res.json(rows)
+    } catch (error) {
+        return res.status(500).json({
+            message: 'Something goes wrong'
+        })        
+    }
+}
+
 export const registerUsuario = async (req, res) => {
     const { user, password, super_admin } = req.body;
     if (!user || !password || !super_admin) {
