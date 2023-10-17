@@ -63,7 +63,8 @@ export const loginUsuario = async (req, res) => {
             }
             const newUser = {
                 user,
-                password
+                super_admin: rowsUser[0].super_admin,
+                id: rowsUser[0].id
             };
             const token = jwt.sign({newUser}, SECRET_KET, { expiresIn: '24h' });
             res.status(200).json({ mensaje: 'Inicio de sesión exitoso', token });
