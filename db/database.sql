@@ -84,6 +84,13 @@ CREATE TABLE IF NOT EXISTS intereses (
     interes DECIMAL
 );
 
+CREATE TABLE IF NOT EXISTS header (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    image LONGTEXT NOT NULL
+);
+DESCRIBE header;
+
 INSERT INTO servicios VALUES
     (0, 'Préstamos Personales', 'prestamos-personales', 'asd', 'asd', 'Nuestros préstamos personales le permiten a usted y su familia hacer realidad los proyectos Usted elije el destino de los fondos para hacer realidad sus proyectos.', '["Usted elije el destino de los fondos para hacer realidad sus proyectos.","Disponibilidad inmediata.","La tasa más conveniente del mercado.","Plazo de financiación acorde a sus necesidades.","Cuotas mensuales, trimestrales y semestrales.","Tasa fija – Cuota Fija."]', true),
     (1, 'Préstamos Prendarios', 'prestamos-prendarios', 'asd', 'asd', 'Para la adquisición de automotores, camiones, utilitarios y otros destinos.', '["Usted elije el destino de los fondos.","Disponibilidad inmediata.","La tasa más conveniente del mercado.","Plazo de financiación acorde a sus necesidades.","Cuotas mensuales, trimestrales y semestrales.","Tasa fija – Cuota Fija.","Pago íntegro hasta 180 días."]', false),
@@ -120,3 +127,7 @@ INSERT INTO preguntas VALUES
     (8, 3, '¿Hay cargos ocultos o adicionales en las cuotas de los préstamos de Mutual?', 'Ejemplo de respuesta 5'),
     (9, 4, '¿Hay cargos ocultos o adicionales en las cuotas de los préstamos de Mutual?', 'Ejemplo de respuesta 6'),
     (10, 5, '¿Hay cargos ocultos o adicionales en las cuotas de los préstamos de Mutual?', 'Ejemplo de respuesta 7')
+
+
+INSERT INTO header VALUES
+    (0, 'Finanzas en criollo', 'header.txt' )

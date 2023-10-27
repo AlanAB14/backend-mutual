@@ -6,6 +6,7 @@ import dicenRoutes from './routes/dicen.routes.js'
 import categoriaPreguntasRoutes from './routes/categoriasPreguntas.routes.js'
 import preguntasRoutes from './routes/preguntas.routes.js'
 import prestamosRoutes from './routes/prestamos.routes.js'
+import headerRoutes from './routes/header.routes.js'
 import indexRoutes from './routes/index.routes.js'
 import bodyParser from 'body-parser'
 import cors from 'cors'
@@ -23,6 +24,7 @@ app.use('/api', dicenRoutes);
 app.use('/api', categoriaPreguntasRoutes);
 app.use('/api', preguntasRoutes);
 app.use('/api', prestamosRoutes);
+app.use('/api', headerRoutes);
 
 app.use((req, res, next) => {
     res.status(404).json({
