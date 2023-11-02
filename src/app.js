@@ -7,6 +7,7 @@ import categoriaPreguntasRoutes from './routes/categoriasPreguntas.routes.js'
 import preguntasRoutes from './routes/preguntas.routes.js'
 import prestamosRoutes from './routes/prestamos.routes.js'
 import headerRoutes from './routes/header.routes.js'
+import interesesRoutes from './routes/intereses.routes.js'
 import correoRoutes from './routes/correo.routes.js'
 import indexRoutes from './routes/index.routes.js'
 import bodyParser from 'body-parser'
@@ -26,6 +27,7 @@ app.use('/api', categoriaPreguntasRoutes);
 app.use('/api', preguntasRoutes);
 app.use('/api', prestamosRoutes);
 app.use('/api', headerRoutes);
+app.use('/api', interesesRoutes);
 app.use('/api', correoRoutes);
 
 app.use((req, res, next) => {
