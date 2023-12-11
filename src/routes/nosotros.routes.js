@@ -1,10 +1,9 @@
-import { Router } from 'express'
-import { getNosotros, updateNosotros } from '../controllers/nosotros.controller.js'
+const { Router } = require('express');
+const { getNosotros, updateNosotros } = require('../controllers/nosotros.controller.js');
 
+const router = Router();
 
-const router = Router()
+router.get('/nosotros', getNosotros);
+router.patch('/nosotros/:id', updateNosotros);
 
-router.get('/nosotros', getNosotros)
-router.patch('/nosotros/:id', updateNosotros)
-
-export default router;
+module.exports = router;

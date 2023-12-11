@@ -1,10 +1,9 @@
-import { Router } from 'express'
-import { getIntereses, updateIntereses } from '../controllers/intereses.controller.js'
+const { Router } = require('express');
+const { getIntereses, updateIntereses } = require('../controllers/intereses.controller.js');
 
+const router = Router();
 
-const router = Router()
+router.get('/intereses', getIntereses);
+router.patch('/intereses/:id', updateIntereses);
 
-router.get('/intereses', getIntereses)
-router.patch('/intereses/:id', updateIntereses)
-
-export default router;
+module.exports = router;

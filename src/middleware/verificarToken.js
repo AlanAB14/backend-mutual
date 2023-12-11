@@ -1,9 +1,8 @@
-import jwt from 'jsonwebtoken'
-import { SECRET_KET } from '../config.js';
-
+const jwt = require('jsonwebtoken');
+const { SECRET_KEY } = require('../config.js');
 
 // Función de middleware para verificar el token
-export function verificarToken(req, res, next) {
+function verificarToken(req, res, next) {
     const token = req.header('Authorization');
     if (!token) {
         return res.status(401).json({ mensaje: 'Acceso denegado. Token no proporcionado.' });
@@ -11,12 +10,13 @@ export function verificarToken(req, res, next) {
 
     try {
         const token = req.headers.authorization.split(' ')[1];
-        const usuarioVerificado = jwt.verify(token, SECRET_KET);
+        const usuarioVerificado = jwt.verify(token, SECRET_KEY);
         req.usuario = usuarioVerificado;
         next();
     } catch (error) {
-        console.log(error)
+        console.log(error);
         res.status(400).json({ mensaje: 'Token no válido.' });
     }
 }
 
+module.exports = { verificarToken };

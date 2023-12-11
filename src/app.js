@@ -1,21 +1,21 @@
-import express from 'express';
-import serviciosRoutes from './routes/servicios.routes.js'
-import nosotrosRoutes from './routes/nosotros.routes.js'
-import usuariosRoutes from './routes/usuarios.routes.js'
-import dicenRoutes from './routes/dicen.routes.js'
-import categoriaPreguntasRoutes from './routes/categoriasPreguntas.routes.js'
-import preguntasRoutes from './routes/preguntas.routes.js'
-import prestamosRoutes from './routes/prestamos.routes.js'
-import headerRoutes from './routes/header.routes.js'
-import interesesRoutes from './routes/intereses.routes.js'
-import correoRoutes from './routes/correo.routes.js'
-import indexRoutes from './routes/index.routes.js'
-import bodyParser from 'body-parser'
-import cors from 'cors'
+const express = require('express');
+const serviciosRoutes = require('./routes/servicios.routes.js');
+const nosotrosRoutes = require('./routes/nosotros.routes.js');
+const usuariosRoutes = require('./routes/usuarios.routes.js');
+const dicenRoutes = require('./routes/dicen.routes.js');
+const categoriaPreguntasRoutes = require('./routes/categoriasPreguntas.routes.js');
+const preguntasRoutes = require('./routes/preguntas.routes.js');
+const prestamosRoutes = require('./routes/prestamos.routes.js');
+const headerRoutes = require('./routes/header.routes.js');
+const interesesRoutes = require('./routes/intereses.routes.js');
+const correoRoutes = require('./routes/correo.routes.js');
+const indexRoutes = require('./routes/index.routes.js');
+const bodyParser = require('body-parser');
+const cors = require('cors');
 
-const app = express()
-app.use(cors())
-app.use(bodyParser.json({ limit: "500mb" }))
+const app = express();
+app.use(cors());
+app.use(bodyParser.json({ limit: "500mb" }));
 app.use(bodyParser.urlencoded({ limit: '500mb', extended: true, parameterLimit: 50000 }));
 
 app.use(indexRoutes);
@@ -33,7 +33,7 @@ app.use('/api', correoRoutes);
 app.use((req, res, next) => {
     res.status(404).json({
         message: 'Endpoint not found'
-    })
-})
+    });
+});
 
-export default app;
+module.exports = app;

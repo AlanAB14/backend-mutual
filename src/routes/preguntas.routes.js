@@ -1,17 +1,17 @@
-import { Router } from 'express'
-import { verificarToken } from '../middleware/verificarToken.js'
-import { createPregunta, deletePregunta, getPreguntas, updatePregunta } from '../controllers/preguntas.controller.js'
+const { Router } = require('express');
+const { verificarToken } = require('../middleware/verificarToken.js');
+const {
+    createPregunta,
+    deletePregunta,
+    getPreguntas,
+    updatePregunta
+} = require('../controllers/preguntas.controller.js');
 
+const router = Router();
 
-const router = Router()
+router.get('/preguntas/:id', getPreguntas);
+router.post('/preguntas', verificarToken, createPregunta);
+router.patch('/preguntas/:id', verificarToken, updatePregunta);
+router.delete('/preguntas/:id', deletePregunta);
 
-router.get('/preguntas/:id', getPreguntas)
-
-router.post('/preguntas', verificarToken, createPregunta)
-
-router.patch('/preguntas/:id', verificarToken, updatePregunta)
-
-router.delete('/preguntas/:id', deletePregunta)
-
-
-export default router;
+module.exports = router;

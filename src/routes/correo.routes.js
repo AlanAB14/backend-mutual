@@ -1,8 +1,7 @@
-import { Router } from 'express'
-import { postCorreo } from '../controllers/correo.controller.js';
+const express = require('express');
+const router = express.Router();
+const { postCorreo } = require('../controllers/correo.controller.js');
 
-const router = Router()
+router.post('/correo', postCorreo);
 
-router.post('/correo', postCorreo)
-
-export default router;
+module.exports = router;

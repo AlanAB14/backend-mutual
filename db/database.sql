@@ -59,7 +59,7 @@ DESCRIBE prestamos;
 CREATE TABLE IF NOT EXISTS intereses (
     id INT AUTO_INCREMENT PRIMARY KEY,
     tipo VARCHAR(255) NOT NULL,
-    interes DECIMAL
+    interes DECIMAL(18,2)
 );
 DESCRIBE intereses;
 
@@ -76,12 +76,6 @@ CREATE TABLE IF NOT EXISTS prestamos (
     tipo VARCHAR(255) NOT NULL,
     data json NOT NULL,
     fecha DATE NOT NULL
-);
-
-CREATE TABLE IF NOT EXISTS intereses (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    tipo VARCHAR(255) NOT NULL,
-    interes DECIMAL
 );
 
 CREATE TABLE IF NOT EXISTS header (
@@ -131,3 +125,8 @@ INSERT INTO preguntas VALUES
 
 INSERT INTO header VALUES
     (0, 'Finanzas en criollo', 'header.txt' )
+
+INSERT INTO intereses VALUES
+    (0, '6 cuotas', 125.38 ),
+    (1, '12 cuotas', 140.93 ),
+    (2, '24 cuotas', 144.89 )

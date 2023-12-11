@@ -1,77 +1,74 @@
-import { pool } from './../db.js'
+const { pool } = require('./../db.js');
 
-export const getCategoriasPreguntas = async (req, res) => {
+exports.getCategoriasPreguntas = async (req, res) => {
     try {
-        const [rows] = await pool.query('SELECT * FROM categoriasPreguntas')
-        res.json(rows)
+        const [rows] = await pool.query('SELECT * FROM categoriasPreguntas');
+        res.json(rows);
     } catch (error) {
         return res.status(500).json({
             message: 'Something goes wrong'
-        })        
+        });
     }
-}
+};
 
-export const getCategoriaPreguntas = async (req, res) => {
+exports.getCategoriaPreguntas = async (req, res) => {
     try {
-        const [rows] = await pool.query('SELECT * FROM categoriasPreguntas WHERE id = ?', [req.params.id])
+        const [rows] = await pool.query('SELECT * FROM categoriasPreguntas WHERE id = ?', [req.params.id]);
         if (rows.length <= 0) return res.status(404).json({
             message: 'Categoria not found'
-        })
-        res.json(rows[0])
+        });
+        res.json(rows[0]);
     } catch (error) {
         return res.status(500).json({
             message: 'Something goes wrong'
-        }) 
+        });
     }
-}
+};
 
-export const createCategoriaPregunta = async (req, res) => {
+exports.createCategoriaPregunta = async (req, res) => {
     const { nombre } = req.body;
     try {
-        const [rows] = await pool.query('INSERT INTO categoriasPreguntas (nombre) VALUES (?)', [ nombre ])
+        const [rows] = await pool.query('INSERT INTO categoriasPreguntas (nombre) VALUES (?)', [nombre]);
         res.send({
             id: rows.insertId,
             nombre
-        })
+        });
     } catch (error) {
         return res.status(500).json({
             message: 'Something goes wrong'
-        }) 
+        });
     }
+};
 
-}
-
-export const deleteCategoriaPregunta = async (req, res) => {
+exports.deleteCategoriaPregunta = async (req, res) => {
     try {
-        const [result] = await pool.query('DELETE FROM categoriasPreguntas WHERE id = ?', [req.params.id])
+        const [result] = await pool.query('DELETE FROM categoriasPreguntas WHERE id = ?', [req.params.id]);
         if (result.affectedRows <= 0) return res.status(404).json({
             message: 'Categoria not found'
-        })
-    
-        res.sendStatus(204)
+        });
+
+        res.sendStatus(204);
     } catch (error) {
         return res.status(500).json({
             message: 'Something goes wrong'
-        }) 
+        });
     }
+};
 
-}
-
-export const updateCategoriaPregunta = async (req, res) => {
-    const { id } = req.params
-    const { nombre } = req.body
+exports.updateCategoriaPregunta = async (req, res) => {
+    const { id } = req.params;
+    const { nombre } = req.body;
     try {
-        const result = await pool.query('UPDATE categoriasPreguntas set nombre = IFNULL(?, nombre) WHERE id = ?', [nombre, id])
+        const result = await pool.query('UPDATE categoriasPreguntas SET nombre = IFNULL(?, nombre) WHERE id = ?', [nombre, id]);
         if (result.affectedRows === 0) return res.status(404).json({
             message: 'Categoria not found'
-        })
-        const [rows] = await pool.query('SELECT * FROM categoriasPreguntas WHERE id = ?', [id])
-        res.send(rows[0])
+        });
+        const [rows] = await pool.query('SELECT * FROM categoriasPreguntas WHERE id = ?', [id]);
+        res.send(rows[0]);
     } catch (error) {
-        console.log(error)
+        console.log(error);
         return res.status(500).json({
             message: 'Something goes wrong'
-        }) 
+        });
     }
-}
-
+};
